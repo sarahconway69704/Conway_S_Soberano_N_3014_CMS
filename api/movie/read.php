@@ -11,15 +11,15 @@ include_once '../objects/movie.php';
 $db       = Database::getInstance()->getConnection();
 
 // initialize object
-$movie = new Movie($db);
+$product = new Product($db);
 
 // query movies
 if (isset($_GET['id'])) {
-    $stmt = $movie->getMovieByID($_GET['id']);
-} else if(isset($_GET['genre'])){
-    $stmt = $movie->getMovieByGenre($_GET['genre']);
+    $stmt = $product->getProductByID($_GET['id']);
+} else if(isset($_GET['category'])){
+    $stmt = $product->getProductByCategory($_GET['category']);
 }else {
-    $stmt = $movie->getMovies();
+    $stmt = $product->getProducts();
 }
 
 $num = $stmt->rowCount();
@@ -31,8 +31,8 @@ if ($num > 0) {
     $results = array();
 
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        $single_movie = $row;
-        $results[]    = $single_movie;
+        $single_product = $row;
+        $results[]    = $single_product;
     }
 
     //TODO:chat about JSON_PRETTY_PRINT vs not
@@ -40,7 +40,7 @@ if ($num > 0) {
 } else {
     echo json_encode(
         array(
-            "message" => "No movies found.",
+            "message" => "No products found.",
         )
     );
 }

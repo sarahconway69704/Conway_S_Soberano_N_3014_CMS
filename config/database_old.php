@@ -4,11 +4,11 @@ class Database_Old
     // Note: specify your own database credentials
     private $host = "localhost";
 
-    private $db_name = "db_movies";
+    private $db_name = "db_sportscheck";
 
     private $username = "root";
 
-    private $password = "";
+    private $password = "root";
 
     public $conn;
 
