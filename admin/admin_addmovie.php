@@ -12,22 +12,17 @@ confirm_logged_in();
 
 //TODO: 5 ~ 10 mins
 // Google how to upload file through PHP???
-$genre_table = 'tbl_genre';
-$genres      = getAll($genre_table);
+$category_table = 'tbl_category';
+$categories      = getAll($category_table);
 
 if (isset($_POST['submit'])) {
-    $movie = array(
-        'cover'   => $_FILES['cover'],
-        'title'   => trim($_POST['title']),
-        'year'    => trim($_POST['year']),
-        'run'     => trim($_POST['run']),
-        'story'   => trim($_POST['story']),
-        'trailer' => trim($_POST['trailer']),
-        'release' => trim($_POST['release']),
-        'genre'   => trim($_POST['genList']),
+    $product = array(
+        'product_img'   => $_FILES['img'],
+        'product_name'   => trim($_POST['name']),
+        'product_description'    => trim($_POST['description']),
     );
 
-    $result  = addMovie($movie);
+    $result  = addProduct($product);
     $message = $result;
 }
 
@@ -37,41 +32,30 @@ if (isset($_POST['submit'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Movie</title>
+    <title>Add Product</title>
 </head>
 <body>
     <?php echo !empty($message) ? $message : ''; ?>
     <form action="admin_addmovie.php" method="post" enctype="multipart/form-data">
-        <label>Cover Image:</label><br>
-        <input type="file" name="cover" value=""><br><br>
+        <label>Product Image:</label><br>
+        <input type="file" name="img" value=""><br><br>
 
-        <label>Movie Title:</label><br>
-        <input type="text" name="title" value=""><br><br>
+        <label>Product Name:</label><br>
+        <input type="text" name="name" value=""><br><br>
 
-        <label>Movie Year:</label><br>
-        <input type="text" name="year" value=""><br><br>
+        <label>Product Description:</label><br>
+        <input type="text" name="description" value=""><br><br>
 
-        <label>Movie Runtime:</label><br>
-        <input type="text" name="run" value=""><br><br>
 
-        <label>Movie Release:</label><br>
-        <input type="text" name="release" value=""><br><br>
-
-        <label>Movie Trailer:</label><br>
-        <input type="text" name="trailer" value=""><br><br>
-
-        <label>Movie Storyline:</label><br>
-        <textarea name="story"></textarea><br><br>
-
-        <label>Movie Genre:</label><br>
+        <label>Product Category:</label><br>
         <select name="genList">
-            <option>Please select a movie genre..</option>
-            <?php while ($row = $genres->fetch(PDO::FETCH_ASSOC)): ?>
-                <option value="<?php echo $row['genre_id'] ?>"><?php echo $row['genre_name']; ?></option>
+            <option>Please select a product category..</option>
+            <?php while ($row = $categories->fetch(PDO::FETCH_ASSOC)): ?>
+                <option value="<?php echo $row['category_id'] ?>"><?php echo $row['category_name']; ?></option>
             <?php endwhile;?>
         </select>
         <br><br>
-        <button type="submit" name="submit">Add Movie</button>
+        <button type="submit" name="submit">Add Product</button>
     </form>
 </body>
 </html>

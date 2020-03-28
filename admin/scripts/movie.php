@@ -1,6 +1,6 @@
 <?php
 
-function addMovie($movie)
+function addProduct($product)
 {
     //TODO: 45 mins ~ 1.5 hrs
 
@@ -9,8 +9,8 @@ function addMovie($movie)
         $pdo = Database::getInstance()->getConnection();
 
         // 2. Validate the uploaded file
-        $cover          = $movie['cover'];
-        $upload_file    = pathinfo($cover['name']);
+        $img          = $product['product_img'];
+        $upload_file    = pathinfo($img['product_name']);
         $accepted_types = array('gif', 'jpg', 'jpe', 'png', 'jpeg', 'webp');
         if (!in_array($upload_file['extension'], $accepted_types)) {
             throw new Exception('Wrong file type!');
@@ -33,31 +33,27 @@ function addMovie($movie)
         // If the upload file is a image, convert it to WebP
 
         // 4. Insert into DB (tbl_movies as well as tbl_mov_genre)
-        $insert_movie_query = 'INSERT INTO tbl_movies(movies_cover,movies_title,movies_year,movies_runtime,movies_storyline,movies_trailer,movies_release)';
-        $insert_movie_query .= ' VALUES(:movies_cover,:movies_title,:movies_year,:movies_runtime,:movies_storyline,:movies_trailer,:movies_release)';
+        $insert_product_query = 'INSERT INTO tbl_products(product_name,product_img,product_description)';
+        $insert_product_query .= ' VALUES(:product_name,:product_img,:product_description)';
 
-        $insert_movie        = $pdo->prepare($insert_movie_query);
-        $insert_movie_result = $insert_movie->execute(
+        $insert_product        = $pdo->prepare($insert_product_query);
+        $insert_product_result = $insert_product->execute(
             array(
-                ':movies_cover'     => $generated_filename,
-                ':movies_title'     => $movie['title'],
-                ':movies_year'      => $movie['year'],
-                ':movies_runtime'   => $movie['run'],
-                ':movies_storyline' => $movie['story'],
-                ':movies_trailer'   => $movie['trailer'],
-                ':movies_release'   => $movie['release'],
+                ':product_img'     => $generated_filename,
+                ':product_name'     => $product['name'],
+                ':product_description'      => $product['description']
             )
         );
 
         $last_uploaded_id = $pdo->lastInsertId();
-        if ($insert_movie_result && !empty($last_uploaded_id)) {
-            $update_genre_query = 'INSERT INTO tbl_mov_genre(movies_id, genre_id) VALUES(:movies_id, :genre_id)';
-            $update_genre       = $pdo->prepare($update_genre_query);
+        if ($insert_product_result && !empty($last_uploaded_id)) {
+            $update_category_query = 'INSERT INTO tbl_products_category(product_id, category_id) VALUES(:product_id, :category_id)';
+            $update_category       = $pdo->prepare($update_category_query);
 
-            $update_genre_result = $update_genre->execute(
+            $update_category_result = $update_category->execute(
                 array(
-                    ':movies_id' => $last_uploaded_id,
-                    ':genre_id'  => $movie['genre'],
+                    ':product_id' => $last_uploaded_id,
+                    ':category_id'  => $product['category'],
                 )
             );
         }
