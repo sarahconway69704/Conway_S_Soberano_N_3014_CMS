@@ -24,7 +24,7 @@ class Movie
         $query = 'SELECT m.*, GROUP_CONCAT(g.category_name) as category_name FROM ' . $this->products_table . ' m';
         $query .= ' LEFT JOIN ' . $this->products_category_linking_table . ' link ON link.product_id = m.product_id';
         $query .= ' LEFT JOIN ' . $this->category_table . ' g ON link.category_id = g.category_id ';
-        $query .= ' GROUP BY m.products_id';
+        $query .= ' GROUP BY m.product_id';
 
         // prepare query statement
         $stmt = $this->conn->prepare($query);
