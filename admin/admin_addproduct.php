@@ -20,6 +20,7 @@ if (isset($_POST['submit'])) {
         'img'   => $_FILES['img'],
         'name'   => trim($_POST['name']),
         'description'    => trim($_POST['description']),
+        'category'   => trim($_POST['genList']),
     );
 
     $result  = addProduct($product);

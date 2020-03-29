@@ -47,7 +47,6 @@ function addProduct($product)
         if ($insert_product_result && !empty($last_uploaded_id)) {
             $update_category_query = 'INSERT INTO tbl_products_category(product_id, category_id) VALUES(:product_id, :category_id)';
             $update_category       = $pdo->prepare($update_category_query);
-
             $update_category_result = $update_category->execute(
                 array(
                     ':product_id' => $last_uploaded_id,
@@ -55,7 +54,7 @@ function addProduct($product)
                 )
             );
         }
-
+ 
         // 5. If all of above works, redirect user to index.php
         redirect_to('index.php');
     } catch (Exception $e) {
