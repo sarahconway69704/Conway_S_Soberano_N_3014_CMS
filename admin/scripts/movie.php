@@ -9,7 +9,7 @@ function addProduct($product)
         $pdo = Database::getInstance()->getConnection();
 
         // 2. Validate the uploaded file
-        $img   = $product['product_img'];
+        $img   = $product['img'];
         $upload_file    = pathinfo($img['name']);
         $accepted_types = array('gif', 'jpg', 'jpe', 'png', 'jpeg', 'webp');
         if (!in_array($upload_file['extension'], $accepted_types)) {
@@ -33,15 +33,13 @@ function addProduct($product)
         // If the upload file is a image, convert it to WebP
 
         // 4. Insert into DB (tbl_movies as well as tbl_mov_genre)
-        $insert_product_query = 'INSERT INTO tbl_products(product_name,product_img,product_description)';
-        $insert_product_query .= ' VALUES(:product_name,:product_img,:product_description)';
-
+        $insert_product_query = 'INSERT INTO tbl_products(product_name,product_img,product_description) VALUES(:pname,:img,:description)';
         $insert_product        = $pdo->prepare($insert_product_query);
         $insert_product_result = $insert_product->execute(
             array(
-                ':product_img'     => $generated_filename,
-                ':product_name'     => $product['name'],
-                ':product_description'      => $product['description']
+                ':pname'     => $product['name'],
+                ':img'     => $generated_filename,
+                ':description'      => $product['description']
             )
         );
 
