@@ -99,4 +99,19 @@ function editProduct($id, $pname, $description, $img){
     }
 }
 
+function searchProduct(){
+
+    $pdo = Database::getInstance()->getConnection();
+    $search = $_POST['search'];
+    $select_product_query = "SELECT * FROM tbl_products WHERE product_name LIKE '%$search%' OR product_description LIKE '%$search%'";
+    $result = $pdo->query($select_product_query);
+
+    if($result){
+        return $result;
+    } else {
+        echo 'There are no results matching your search';
+    
+}
+}
+
 
