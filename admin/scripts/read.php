@@ -48,3 +48,55 @@ function getProductsByFilter($args)
         return 'There was a problem accessing this info';
     }
 }
+
+
+function editSingleProduct($id){
+    $pdo = Database::getInstance()->getConnection();
+    //TODO: execute the proper SQL query to fetch the user data whose user_id = $id
+    $get_product_query = 'SELECT * FROM tbl_products WHERE product_id = :id';
+    $get_product_set = $pdo->prepare($get_product_query);
+    $get_product_result = $get_product_set->execute(
+        array(
+            ':id'=>$id
+        )
+    );
+
+    //TODO: if the execution is successful, return the user data
+    // Otherwise, return an error message
+    if($get_product_result){
+        return $get_product_set;
+    }else{
+        return 'There was a problem accessing the user';
+    }
+}
+
+function editProduct($id, $pname, $description, $img){
+    //TODO: set up database connection
+    $pdo = Database::getInstance()->getConnection();
+
+    //TODO: Run the proper SQL query to update tbl_user with proper values
+    $update_product_query = 'UPDATE tbl_products SET product_name = :pname, product_description = :description,';
+    $update_product_query .= 'product_img =:img WHERE product_id = :id';
+    $update_product_set = $pdo->prepare($update_product_query);
+    $update_product_result = $update_product_set->execute(
+        array(
+            ':pname'=>$pname,
+            ':description'=>$description,
+            ':img'=>$img,
+            ':id'=>$id
+        )
+    );
+
+    echo $update_product_set->debugDumpParams();
+    exit;
+
+    //TODO: if everything goes well, redirect user to index.php
+    // Otherwise, return some error message...
+    if($update_product_result){
+        redirect_to('index.php');
+    }else{
+        return 'Guess you got canned...';
+    }
+}
+
+

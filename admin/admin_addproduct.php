@@ -17,9 +17,9 @@ $categories = getAll($category_table);
 
 if (isset($_POST['submit'])) {
     $product = array(
-        'product_img'   => $_FILES['img'],
-        'product_name'   => trim($_POST['name']),
-        'product_description'    => trim($_POST['description']),
+        'img'   => $_FILES['img'],
+        'name'   => trim($_POST['name']),
+        'description'    => trim($_POST['description']),
     );
 
     $result  = addProduct($product);
@@ -36,7 +36,7 @@ if (isset($_POST['submit'])) {
 </head>
 <body>
     <?php echo !empty($message) ? $message : ''; ?>
-    <form action="admin_addmovie.php" method="post" enctype="multipart/form-data">
+    <form action="admin_addproduct.php" method="post" enctype="multipart/form-data">
         <label>Product Image:</label><br>
         <input type="file" name="img" value=""><br><br>
 
