@@ -13,7 +13,7 @@ confirm_logged_in();
 //TODO: 5 ~ 10 mins
 // Google how to upload file through PHP???
 $category_table = 'tbl_category';
-$categories      = getAll($category_table);
+$categories = getAll($category_table);
 
 if (isset($_POST['submit'])) {
     $product = array(
@@ -51,7 +51,7 @@ if (isset($_POST['submit'])) {
         <select name="genList">
             <option>Please select a product category..</option>
             <?php while ($row = $categories->fetch(PDO::FETCH_ASSOC)): ?>
-                <option value="<?php echo $row['category_id'] ?>"><?php echo $row['category_name']; ?></option>
+                <option value="<?php echo $row['category_id']?>"><?php echo $row['category_name'];?></option>
             <?php endwhile;?>
         </select>
         <br><br>

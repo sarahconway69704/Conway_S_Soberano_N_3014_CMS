@@ -9,8 +9,8 @@ function addProduct($product)
         $pdo = Database::getInstance()->getConnection();
 
         // 2. Validate the uploaded file
-        $img          = $product['product_img'];
-        $upload_file    = pathinfo($img['product_name']);
+        $img   = $product['product_img'];
+        $upload_file    = pathinfo($img['name']);
         $accepted_types = array('gif', 'jpg', 'jpe', 'png', 'jpeg', 'webp');
         if (!in_array($upload_file['extension'], $accepted_types)) {
             throw new Exception('Wrong file type!');
@@ -25,7 +25,7 @@ function addProduct($product)
         $generated_filename = $generated_name . '.' . $upload_file['extension'];
         $targetpath         = $image_path . $generated_filename;
 
-        if (!move_uploaded_file($cover['tmp_name'], $targetpath)) {
+        if (!move_uploaded_file($img['tmp_name'], $targetpath)) {
             throw new Exception('Failed to move uploaded file, check permission!');
         }
 
@@ -64,5 +64,38 @@ function addProduct($product)
         // Otherwise, return some error message
         $error = $e->getMessage();
         return $error;
+    }
+}
+
+
+function getAllProducts(){
+    $pdo = Database::getInstance()->getConnection();
+
+    $get_product_query = 'SELECT * FROM tbl_products';
+    $products = $pdo->query($get_product_query);
+
+    if($products){
+        return $products;
+    }else{
+        return false;
+    }
+}
+
+function deleteProduct($id){
+    $pdo = Database::getInstance()->getConnection();
+    $delete_product_query = 'DELETE FROM tbl_products WHERE product_id = :id';
+    $delete_product_set = $pdo->prepare($delete_product_query);
+    $delete_product_result = $delete_product_set->execute(
+        array(
+            ':id'=>$id
+        )
+    );
+
+    //If everything went through, redirect to admin_deleteuser.php
+    //Otherwise, return false
+    if($delete_product_result && $delete_product_set->rowCount() > 0){
+        redirect_to('admin_deleteproduct.php');
+    }else{
+        return false;
     }
 }
