@@ -26,15 +26,18 @@ if (isset($_GET['filter'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Welcome to the Products CMS!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    
 </head>
 <body>
     <?php include 'templates/header.php';?>
     <?php while ($row = $getProducts->fetch(PDO::FETCH_ASSOC)): ?>
         <div class="movie-item">
+            <h2 class="title"><?php echo $row['product_name']; ?></h2>
             <img src="images/<?php echo $row['product_img']; ?>" alt="<?php echo $row['product_name']; ?>" />
-            <h2><?php echo $row['product_name']; ?></h2>
 
-            <a href="details.php?id=<?php echo $row['product_id']; ?>">Read More...</a>
+            <a class="readMore" href="details.php?id=<?php echo $row['product_id']; ?>">Read More...</a>
         </div>
     <?php endwhile;?>
     <?php include 'templates/footer.php';?>
