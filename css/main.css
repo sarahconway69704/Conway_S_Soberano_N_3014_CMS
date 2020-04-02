@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+body {
+    font-family:'Open Sans', sans-serif;
+
+}
+
+.head {
+    text-align: center;
+    font-size: 40px;
+    text-transform: uppercase;
+    color: white;
+    background-color: rgb(45, 49, 49);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-decoration: underline red;
+    margin-top: 2px;
+}
+
+.login {
+    text-decoration: none;
+    color: rgb(45, 49, 49);
+    font-size: 25px;
+    text-transform: uppercase;
+    margin-left: 10px;
+    font-weight: 700;
+}
+
+a:hover {
+    color: red;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+nav ul li a{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    text-transform: uppercase;
+    margin-left: 2px;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+nav ul {
+    margin: 0 auto;
+    text-align: center;
+    background-color: rgb(45, 49, 49);
+    padding: 10px;
+    margin-top: 25px; 
+}
+
+form {
+    margin-top: 10px;
+    margin-bottom: 2px;
+}
+
+input {
+    width: 500px;
+}
+
+img {
+    height: 200px;
+    width: 300px;
+}
+
+.title {
+    text-decoration: underline red;
+    padding-left: 25px;
+    margin-top: 50px;
+}
+
+.readMore{
+    background-color: rgb(45, 49, 49);
+    color: white;
+    padding: 15px;
+    border-radius: 12px;
+}
+
+a.readMore{
+    text-decoration: none;
+}
+
+.writing {
+    padding: 20px;
+    line-height: 30px;
+}
+
+.name {
+    padding-left: 20px;
+    text-decoration: underline red;
+}
+
+.back {
+    background-color: rgb(45, 49, 49);
+    color: white;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 50px;
+    float: right;
+    text-decoration: none;
+    margin-right: 30px;
+}
+
+.footer {
+    text-align: center;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: white;
+    background-color: rgb(45, 49, 49);
+    margin-top: 90px;
+    padding: 10px;
+}

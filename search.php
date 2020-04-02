@@ -8,8 +8,6 @@ if(isset($_POST['submit-search'])){
 ?>
 
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,6 +15,7 @@ if(isset($_POST['submit-search'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Search Page</title>
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 <?php while ($row = $searchResults->fetch(PDO::FETCH_ASSOC)): ?>
@@ -24,7 +23,7 @@ if(isset($_POST['submit-search'])){
             <img src="images/<?php echo $row['product_img']; ?>" alt="<?php echo $row['product_name']; ?>" />
             <h2><?php echo $row['product_name']; ?></h2>
 
-            <a href="details.php?id=<?php echo $row['product_id']; ?>">Read More...</a>
+            <a class="readMore" href="details.php?id=<?php echo $row['product_id']; ?>">Read More...</a>
         </div>
     <?php endwhile;?>
     
