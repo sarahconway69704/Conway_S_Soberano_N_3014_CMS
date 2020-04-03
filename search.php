@@ -18,6 +18,7 @@ if(isset($_POST['submit-search'])){
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
+<h1>Search Results</h1>
 <?php while ($row = $searchResults->fetch(PDO::FETCH_ASSOC)): ?>
         <div class="movie-item">
             <img src="images/<?php echo $row['product_img']; ?>" alt="<?php echo $row['product_name']; ?>" />
