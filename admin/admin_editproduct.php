@@ -7,15 +7,6 @@
         $message = 'Failed to get product list';
     }
 
-
-    //if(isset($_GET['id'])){
-       // $product_id = $_GET['id'];
-       // $delete_result = deleteProduct($product_id);
-
-       // if(!$delete_result){
-          //  $message = 'Failed to delete product';
-       // }
-   // }
 ?>
 
 <!DOCTYPE html>
@@ -23,10 +14,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delete User</title>
+    <title>Edit Products</title>
 </head>
 <body>
-    <h2>Time to delete some products...</h2>
+    <h2>Time to edit some products...</h2>
     <?php echo !empty($message)?$message:'';?>
     <table>
         <thead>

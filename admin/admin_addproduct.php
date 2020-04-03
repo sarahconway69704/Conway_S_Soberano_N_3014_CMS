@@ -2,16 +2,6 @@
 require_once '../load.php';
 confirm_logged_in();
 
-//TODO: 15 mins - 20 mins
-//1. Refere how we build the add user page
-//2. Check the Database and find out how the form looks like
-//3. Build the form
-
-//TODO: 15 mins - 20 mins
-//Figure out how do we pull the genres from tbl_genre and populate in the following <select> element
-
-//TODO: 5 ~ 10 mins
-// Google how to upload file through PHP???
 $category_table = 'tbl_category';
 $categories = getAll($category_table);
 

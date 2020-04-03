@@ -2,11 +2,9 @@
     require_once '../load.php';
     confirm_logged_in();
 
-
     $id = $_GET['id'];
-        
     $product = editSingleProduct($id);
-
+    
     if(is_string($product)){
         $message = $product;
     }
@@ -14,10 +12,9 @@
     if(isset($_POST['submit'])){
         $pname = trim($_POST['product_name']);
         $description = trim($_POST['description']);
-        $img = $_FILES['product_img'];
-
-
-        $message = editProduct($id, $pname, $description, $img);
+        //$img = $_FILES['product_img'];
+        
+        $message = editProduct($id, $pname, $description);
     }
 ?>
 <!DOCTYPE html>
@@ -38,11 +35,10 @@
             <label>Product Description:</label>
             <input type="text" name="description" value="<?php echo $info['product_description'];?>"><br><br>
 
-            <label>Product Image:</label>
-            <input type="file" name="product_img" value="<?php echo $info['product_img'];?>"><br><br>
+         
 
         <?php endwhile;?>
-        <button type="submit" name="submit">Edit Product</button>
+      <button type="submit" name="submit">Edit Product</button>
     </form>
 </body>
 </html>
