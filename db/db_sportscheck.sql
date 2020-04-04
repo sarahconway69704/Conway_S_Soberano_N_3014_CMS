@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Apr 03, 2020 at 12:44 AM
+-- Generation Time: Apr 04, 2020 at 11:04 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.3.8
 
@@ -47,86 +47,6 @@ INSERT INTO `tbl_category` (`category_id`, `category_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_colour`
---
-
-CREATE TABLE `tbl_colour` (
-  `colour_id` int(11) NOT NULL,
-  `colour_name` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `tbl_colour`
---
-
-INSERT INTO `tbl_colour` (`colour_id`, `colour_name`) VALUES
-(1, 'Blue'),
-(2, 'Orange'),
-(3, 'Pink'),
-(4, 'Yellow'),
-(5, 'White'),
-(6, 'Black'),
-(7, 'Red'),
-(8, 'Green'),
-(9, 'Brown'),
-(10, 'Peach'),
-(11, 'Navy');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_price`
---
-
-CREATE TABLE `tbl_price` (
-  `price_id` int(11) NOT NULL,
-  `price_name` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `tbl_price`
---
-
-INSERT INTO `tbl_price` (`price_id`, `price_name`) VALUES
-(1, '$249.99'),
-(2, '$159.99'),
-(3, '$829.99'),
-(4, '$159.99'),
-(5, '$699.99'),
-(6, '$28.00'),
-(7, '$29.99'),
-(8, '$25.99'),
-(9, '$22.00'),
-(10, '$29.99'),
-(11, '$79.98'),
-(12, '$87.99'),
-(13, '$109.99'),
-(14, '$79.98'),
-(15, '$169.99'),
-(16, '$84.99'),
-(17, '$130.00'),
-(18, '$130.00'),
-(19, '$130.00'),
-(20, '$130.00'),
-(21, '$249.99'),
-(22, '$199.99'),
-(23, '$149.99'),
-(24, '$129.99'),
-(25, '$149.99'),
-(26, '$84.99'),
-(27, '$150.00'),
-(28, '$150.00'),
-(29, '$150.00'),
-(30, '$150.00'),
-(31, '$42.99'),
-(32, '$24.99'),
-(33, '$179.99'),
-(34, '$39.99'),
-(35, '$30.00');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `tbl_products`
 --
 
@@ -142,7 +62,7 @@ CREATE TABLE `tbl_products` (
 --
 
 INSERT INTO `tbl_products` (`product_id`, `product_name`, `product_img`, `product_description`) VALUES
-(1, 'Men\'s Blue Hybrid Bike', 'bike1.png', 'There are so many reasons to ride a bike. Whether you’re looking to stay fit, have fun exploring your city, commuting to work or school or keeping it green while getting errands done, the Men\'s GT Transeo Comp 2019 - Blue blends all of your needs into one sleek ride. With a suspension fork to smooth out the bumps in the road or pathway, space for racks so you can carry extra loads, this bike is ready to cover all of the bases.\r\n\r\nThe GT Transeo Comp also features a better component set compared to the Sport model for those who want an upgraded ride.'),
+(1, 'Men\'s Blue Hybrid Bike', 'bike1.png', 'There are so many reasons to ride a bike. Whether you’re looking to stay fit, have fun exploring your city, commuting to work or school or keeping it green while getting errands done, the Men\'s GT Transeo Comp 2019 - Blue blends all of your needs into one sleek ride. With a suspension fork to smooth out the bumps in the road or pathway, space for racks so you can carry extra loads, this bike is ready to cover all of the bases.The GT Transeo Comp also features a better component set compared to the Sport model for those who want an upgraded ride.'),
 (2, 'Women\'s Blue Mountain Bike', 'bike2.png', 'The Nakamura Inspire is an excellent choice entry level mountain bike. The hardtail design, quality components and an 18 speed drivetrain provides the rider with a versatile bike that is great for riding around the neighborhood and on recreational trails.'),
 (3, 'Kid\'s Orange Training Bike', 'bike3.png', 'The Schwinn Backdraft 16\" Kid’s Bike makes learning to ride easy and will grow with your child. The sturdy steel frame provides durability and the coaster brake and front brake ensure secure stopping. A quick release seat adjusts for fast growing kids and training wheels provide stability. The Backdraft features all new Schwinn SmartStart geometry, which means that the bike has been carefully designed to match a kid’s body type to create a more comfortable, ideal riding position. This includes a lighter bike frame for added control, smaller grip handles to match smaller hands, a more narrow pedal position to match narrow kid hips and much more! Other kids bikes are just shrunken down version of adult bikes, so typically the grips are too large, the pedals are to wide and the seats are too large. With this great riding experience, the Scorch is a parent and child favorite. You probably learned how to ride on a Schwinn all those years ago. Now it’s time your child does too. '),
 (4, 'Kid\'s Pink Training Bike', 'bike4.png', 'A great choice for teaching your youngster how to ride a bike, the 16\" Jasmine sidewalk bike from Schwinn features a grown-up look that’s great for showing off around the neighborhood. It’s outfitted with an enclosed chain guard to help prevent snags and dirty pant cuffs. The rear coaster-style brake makes stopping a breeze for new cyclists, and the Jasmine also includes a front caliper brake which allows the child to learn how to use a handbrake safely. We’ve included training wheels for stability while your little one learns the invaluable skill of bike riding, and a tool-free adjustable seat post that lets your child grow with the bike. And we’re only just getting to the best part. The Jasmine features all new Schwinn SmartStart geometry, a complete redesign of bike geometry that matches a kid’s body type to create a more comfortable, ideal riding position. This includes a lighter bike frame for added control, smaller grip handles to match smaller hands, and a more narrow pedal position to match narrow kid hips! Other kids bikes are just shrunken down versions of adult bikes, so typically the grips are too large, the pedals too wide, and the seats are too big. With this great riding experience, the Scorch is a parent and child favorite. You probably learned how to ride on a Schwinn all those years ago. Now it’s time your child does too.'),
@@ -288,59 +208,6 @@ INSERT INTO `tbl_products_colour` (`product_colour_id`, `product_id`, `colour_id
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_products_price`
---
-
-CREATE TABLE `tbl_products_price` (
-  `product_price_id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `price_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `tbl_products_price`
---
-
-INSERT INTO `tbl_products_price` (`product_price_id`, `product_id`, `price_id`) VALUES
-(1, 2, 249),
-(2, 4, 160),
-(3, 5, 830),
-(4, 3, 160),
-(5, 1, 700),
-(6, 11, 28),
-(7, 13, 30),
-(8, 12, 26),
-(9, 15, 22),
-(10, 14, 30),
-(11, 18, 80),
-(12, 16, 88),
-(13, 17, 110),
-(14, 20, 80),
-(15, 18, 170),
-(16, 24, 85),
-(17, 22, 130),
-(18, 23, 130),
-(19, 21, 130),
-(20, 25, 130),
-(21, 31, 250),
-(22, 32, 200),
-(23, 33, 150),
-(24, 34, 130),
-(25, 35, 150),
-(26, 29, 85),
-(27, 28, 150),
-(28, 26, 150),
-(29, 27, 150),
-(30, 30, 150),
-(31, 7, 43),
-(32, 10, 25),
-(33, 7, 180),
-(34, 9, 40),
-(35, 8, 30);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `tbl_user`
 --
 
@@ -374,18 +241,6 @@ ALTER TABLE `tbl_category`
   ADD PRIMARY KEY (`category_id`);
 
 --
--- Indexes for table `tbl_colour`
---
-ALTER TABLE `tbl_colour`
-  ADD PRIMARY KEY (`colour_id`);
-
---
--- Indexes for table `tbl_price`
---
-ALTER TABLE `tbl_price`
-  ADD PRIMARY KEY (`price_id`);
-
---
 -- Indexes for table `tbl_products`
 --
 ALTER TABLE `tbl_products`
@@ -404,12 +259,6 @@ ALTER TABLE `tbl_products_colour`
   ADD PRIMARY KEY (`product_colour_id`);
 
 --
--- Indexes for table `tbl_products_price`
---
-ALTER TABLE `tbl_products_price`
-  ADD PRIMARY KEY (`product_price_id`);
-
---
 -- Indexes for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
@@ -424,18 +273,6 @@ ALTER TABLE `tbl_user`
 --
 ALTER TABLE `tbl_category`
   MODIFY `category_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT for table `tbl_colour`
---
-ALTER TABLE `tbl_colour`
-  MODIFY `colour_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- AUTO_INCREMENT for table `tbl_price`
---
-ALTER TABLE `tbl_price`
-  MODIFY `price_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `tbl_products`
@@ -454,12 +291,6 @@ ALTER TABLE `tbl_products_category`
 --
 ALTER TABLE `tbl_products_colour`
   MODIFY `product_colour_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
-
---
--- AUTO_INCREMENT for table `tbl_products_price`
---
-ALTER TABLE `tbl_products_price`
-  MODIFY `product_price_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`

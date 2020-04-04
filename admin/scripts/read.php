@@ -15,11 +15,8 @@ function getAll($tbl)
 
 function getSingleProduct($tbl, $col, $id)
 {
-    //TODO: finish the function based on getAll, this time only return
-    // one movie's fields
 
     $pdo = Database::getInstance()->getConnection();
-    // $query = 'SELECT * FROM '.$tbl.' WHERE '$col' = '.$id;
     $query = "SELECT * FROM $tbl WHERE $col = $id";
     $results = $pdo->query($query);
 
@@ -52,7 +49,7 @@ function getProductsByFilter($args)
 
 function editSingleProduct($id){
     $pdo = Database::getInstance()->getConnection();
-    //TODO: execute the proper SQL query to fetch the user data whose user_id = $id
+   
     $get_product_query = 'SELECT * FROM tbl_products WHERE product_id = :id';
     $get_product_set = $pdo->prepare($get_product_query);
     $get_product_result = $get_product_set->execute(
@@ -61,9 +58,6 @@ function editSingleProduct($id){
         )
     );
 
-    
-    //TODO: if the execution is successful, return the user data
-    // Otherwise, return an error message
     if($get_product_result){
         return $get_product_set;
     }else{
@@ -97,8 +91,6 @@ function editProduct($id, $pname, $description, $category){
                 ':category_id' => $category
             )
         );
-    
-  
 
   
     //echo $update_product_set->debugDumpParams();
