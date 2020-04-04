@@ -5,15 +5,14 @@ header("Content-Type: application/json; charset=UTF-8");
 
 // include database and object files
 include_once '../../config/database.php';
-include_once '../objects/movie.php';
+include_once '../objects/product.php';
 
-// instantiate database and movie object
+
 $db       = Database::getInstance()->getConnection();
 
-// initialize object
 $product = new Product($db);
 
-// query movies
+
 if (isset($_GET['id'])) {
     $stmt = $product->getProductByID($_GET['id']);
 } else if(isset($_GET['category'])){
