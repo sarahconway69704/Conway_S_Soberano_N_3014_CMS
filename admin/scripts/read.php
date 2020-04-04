@@ -72,27 +72,49 @@ function editSingleProduct($id){
 }
 
 function editProduct($id, $pname, $description){
-    //TODO: set up database connection
+
     $pdo = Database::getInstance()->getConnection();
 
-    //TODO: Run the proper SQL query to update tbl_user with proper values
-    $update_product_query = 'UPDATE tbl_products SET product_name = :pname, product_description = :description,';
-    $update_product_query .= ' WHERE product_id = :id';
+    // 2. Validate the uploaded file
+    //$img   = $id['img'];
+    //$upload_file    = pathinfo($img['pname']);
+    //$accepted_types = array('gif', 'jpg', 'jpe', 'png', 'jpeg', 'webp');
+    //if (!in_array($upload_file['extension'], $accepted_types)) {
+        //throw new Exception('Wrong file type!');
+    //}
+
+    // 3. Move the uploaded file around (move the file from tmp path to the /images)
+    //$image_path = '../images/';
+
+    //Optional 10 ~ 20 mins
+    // Randomlize/hash the file name before move it over!
+    //$generated_name     = md5($upload_file['filename'] . time());
+    //$generated_filename = $generated_name . '.' . $upload_file['extension'];
+    //$targetpath         = $image_path . $generated_filename;
+
+    //if (!move_uploaded_file($img['tmp_name'], $targetpath)) {
+        //throw new Exception('Failed to move uploaded file, check permission!');
+    //}
+
+  
+    //$pdo = Database::getInstance()->getConnection();
+
+ 
+    $update_product_query = 'UPDATE tbl_products SET product_name = :pname, product_description = :description WHERE product_id = :id';
     $update_product_set = $pdo->prepare($update_product_query);
     $update_product_result = $update_product_set->execute(
         array(
+            ':id'=>$id,
             ':pname'=>$pname,
             ':description'=>$description,
-           // ':img'=>$img,
-            ':id'=>$id
+            //':img'=>$img
         )
     );
 
   
-    echo $update_product_set->debugDumpParams();
-    exit;
-    //TODO: if everything goes well, redirect user to index.php
-    // Otherwise, return some error message...
+    //echo $update_product_set->debugDumpParams();
+    //exit;
+  
     if($update_product_result){
         redirect_to('index.php');
     }else{
