@@ -2,6 +2,8 @@
     require_once '../load.php';
     confirm_logged_in();
 
+    $category_table = 'tbl_category';
+    $categories = getAll($category_table);
 
     if (isset($_GET['id'])) {
         $id = $_GET['id'];
@@ -14,20 +16,11 @@
         if(isset($_POST['submit'])){
         $pname = trim($_POST['product_name']);
         $description = trim($_POST['product_description']);
-        
-        $message = editProduct($id, $pname, $description);
+        $category  = trim($_POST['genList']);
+        $message = editProduct($id, $pname, $description, $category);
         }
     }
 
-    //$id = $_GET['id'];
-    //$product = editSingleProduct($id);
-    
-    //if(is_string($product)){
-        //$message = $product;
-    //}
-
-   
-    //}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,6 +39,14 @@
 
             <label>Product Description:</label>
             <input type="text" name="product_description" value="<?php echo $info['product_description'];?>"><br><br>
+
+            <label>Product Category:</label><br>
+            <select name="genList">
+            <option>Please select a product category..</option>
+            <?php while ($row = $categories->fetch(PDO::FETCH_ASSOC)): ?>
+                <option value="<?php echo $row['category_id']?>"><?php echo $row['category_name'];?></option>
+            <?php endwhile;?>
+        </select>
 
           
         <?php endwhile;?>
