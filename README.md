@@ -18,3 +18,9 @@ This a Sportschek CMS and login.
 
 #### URLs
 1. The project is up in `http://localhost:8888` which is mapping to the `Sarah_C_Natalie_S_3014_CMS/` folder
+
+#### Team
+Sarah Conway
+Natalie Soberano
+
+
