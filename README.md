@@ -1,8 +1,8 @@
-#### Non-Integrated Custom CMS  
+# Non-Integrated Custom CMS  
 This a Sportschek CMS and login. 
 
 
-#### Prerequisites
+## Prerequisites
 1. Open MAMP or WAMP
 
 
@@ -20,7 +20,7 @@ This a Sportschek CMS and login.
 1. The project is up in `http://localhost:8888` which is mapping to the `Sarah_C_Natalie_S_3014_CMS/` folder
 
 #### Team
-Sarah Conway
-Natalie Soberano
+* Sarah Conway
+* Natalie Soberano
 
 
